@@ -30,6 +30,7 @@ public class Stopwatch : MonoBehaviour
         else
         {
             text.text = "Time's up!";
+            playing = false;
         }
     }
 }
