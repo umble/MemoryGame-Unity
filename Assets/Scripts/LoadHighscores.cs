@@ -12,8 +12,9 @@ public class LoadHighscores : MonoBehaviour
     void Start()
     {
         // Load from file
-        string path = Application.dataPath + "/Resources/JSONFiles/highscores.json";
+        string path = Application.persistentDataPath + "/highscores.json";
         Debug.Log(path);
+        TextAsset textAsset = Resources.Load<TextAsset>(path);
 
         List<Highscore> leaderboard = new List<Highscore>();
 

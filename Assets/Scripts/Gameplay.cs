@@ -19,6 +19,7 @@ public class Gameplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(Application.persistentDataPath);
         // Initialize
         difficulty = PlayerPrefs.GetInt("Difficulty", 1);
         firstCard = null;
@@ -85,9 +86,9 @@ public class Gameplay : MonoBehaviour
 
             // Save the time to leaderboard
             Highscore saveScore = new Highscore(stringDiff, finalTime);
-            string path = Application.dataPath + "/Resources/JSONFiles/";
+            string path = Application.persistentDataPath;
             string json = JsonUtility.ToJson(saveScore);
-            File.AppendAllText(path + "highscores.json", json + System.Environment.NewLine);
+            File.AppendAllText(path + "/highscores.json", json + System.Environment.NewLine);
 
             // So the save file only run 1 time
             playing = true;
