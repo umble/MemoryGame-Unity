@@ -97,14 +97,13 @@ public class GenerateCards : MonoBehaviour
                 newCard.transform.localScale -= new Vector3(scale, scale, 0);
 
                 // Give card random texture with tag
-                int randomIdx = new System.Random().Next(prevCardList.Count);
+                // int randomIdx = new System.Random().Next(prevCardList.Count);
+                int randomIdx = Random.Range(0, prevCardList.Count);
                 newCard.transform.GetChild(1).GetComponent<RawImage>().texture = prevCardList[randomIdx] as Texture2D;
+                newCard.transform.GetChild(1).tag = prevCardList[randomIdx].name;
                 if (!currentCardList.Contains(prevCardList[randomIdx]))
                 {
                     currentCardList.Add(prevCardList[randomIdx]);
-                    Object temp = prevCardList[randomIdx];
-                    prevCardList.RemoveAt(randomIdx);
-                    prevCardList.Add(temp);
                 }
                 else
                 {
@@ -112,11 +111,6 @@ public class GenerateCards : MonoBehaviour
                 }
             }
         }
-    }
-
-    void ShuffleList(List<Object> list)
-    {
-        // while(list.Count != 0)
     }
 
     // Update is called once per frame
